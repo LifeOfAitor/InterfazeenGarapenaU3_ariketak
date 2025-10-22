@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ariketa1/1.0.0": {
+        "dependencies": {
+          "libreriaVehiculos": "1.0.0"
+        },
+        "runtime": {
+          "ariketa1.dll": {}
+        }
+      },
+      "libreriaVehiculos/1.0.0": {
+        "runtime": {
+          "libreriaVehiculos.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ariketa1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "libreriaVehiculos/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

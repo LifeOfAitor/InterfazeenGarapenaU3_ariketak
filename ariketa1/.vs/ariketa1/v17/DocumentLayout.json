@@ -1,0 +1,93 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\interfazeen_garapena\\U3\\ariketa1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{255D3F83-7A51-4C33-ADEF-CCE9CCC0F307}|ariketa1.csproj|d:\\interfazeen_garapena\\u3\\ariketa1\\autobusa_window.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{255D3F83-7A51-4C33-ADEF-CCE9CCC0F307}|ariketa1.csproj|solutionrelative:autobusa_window.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{255D3F83-7A51-4C33-ADEF-CCE9CCC0F307}|ariketa1.csproj|d:\\interfazeen_garapena\\u3\\ariketa1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{255D3F83-7A51-4C33-ADEF-CCE9CCC0F307}|ariketa1.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87F08235-7ABA-499C-87D1-BCE600F4CEA7}|..\\libreriaVehiculos\\libreriaVehiculos.csproj|d:\\interfazeen_garapena\\u3\\libreriavehiculos\\sillacontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87F08235-7ABA-499C-87D1-BCE600F4CEA7}|..\\libreriaVehiculos\\libreriaVehiculos.csproj|d:\\interfazeen_garapena\\u3\\libreriavehiculos\\sillacontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SillaControl.xaml",
+              "DocumentMoniker": "D:\\interfazeen_garapena\\U3\\libreriaVehiculos\\SillaControl.xaml",
+              "RelativeDocumentMoniker": "..\\libreriaVehiculos\\SillaControl.xaml",
+              "ToolTip": "D:\\interfazeen_garapena\\U3\\libreriaVehiculos\\SillaControl.xaml",
+              "RelativeToolTip": "..\\libreriaVehiculos\\SillaControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-22T08:52:59.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\interfazeen_garapena\\U3\\ariketa1\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "D:\\interfazeen_garapena\\U3\\ariketa1\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T08:50:35.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "autobusa_window.xaml.cs",
+              "DocumentMoniker": "D:\\interfazeen_garapena\\U3\\ariketa1\\autobusa_window.xaml.cs",
+              "RelativeDocumentMoniker": "autobusa_window.xaml.cs",
+              "ToolTip": "D:\\interfazeen_garapena\\U3\\ariketa1\\autobusa_window.xaml.cs",
+              "RelativeToolTip": "autobusa_window.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T06:56:03.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SillaControl.xaml.cs",
+              "DocumentMoniker": "D:\\interfazeen_garapena\\U3\\libreriaVehiculos\\SillaControl.xaml.cs",
+              "RelativeDocumentMoniker": "..\\libreriaVehiculos\\SillaControl.xaml.cs",
+              "ToolTip": "D:\\interfazeen_garapena\\U3\\libreriaVehiculos\\SillaControl.xaml.cs",
+              "RelativeToolTip": "..\\libreriaVehiculos\\SillaControl.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T11:17:30.644Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

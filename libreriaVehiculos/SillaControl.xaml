@@ -1,0 +1,43 @@
+<UserControl x:Class="libreriaVehiculos.SillaControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:libreriaVehiculos"
+             mc:Ignorable="d" 
+             >
+
+    <Grid>
+        <Button x:Name="SillaButton"
+                Width="35" Height="35"
+                Margin="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Click="SillaButton_Click">
+
+            <Button.Content>
+                <TextBlock Text="{Binding NumeroAsiento}" 
+                           FontWeight="Bold" 
+                           Foreground="Black" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"/>
+            </Button.Content>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Gray"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Estado}" Value="Libre">
+                            <Setter Property="Background" Value="LightGreen"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Estado}" Value="Seleccionado">
+                            <Setter Property="Background" Value="Yellow"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Estado}" Value="Ocupado">
+                            <Setter Property="Background" Value="LightPink"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</UserControl>

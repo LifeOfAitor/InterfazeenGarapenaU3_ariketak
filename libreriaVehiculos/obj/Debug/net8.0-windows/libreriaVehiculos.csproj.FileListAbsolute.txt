@@ -1,0 +1,16 @@
+D:\interfazeen_garapena\U3\libreriaVehiculos\bin\Debug\net8.0-windows\libreriaVehiculos.deps.json
+D:\interfazeen_garapena\U3\libreriaVehiculos\bin\Debug\net8.0-windows\libreriaVehiculos.dll
+D:\interfazeen_garapena\U3\libreriaVehiculos\bin\Debug\net8.0-windows\libreriaVehiculos.pdb
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\SillaControl.g.cs
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\libreriaVehiculos_MarkupCompile.cache
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\libreriaVehiculos_MarkupCompile.lref
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\SillaControl.baml
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\libreriaVehiculos.g.resources
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\libreriaVehiculos.GeneratedMSBuildEditorConfig.editorconfig
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\libreriaVehiculos.AssemblyInfoInputs.cache
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\libreriaVehiculos.AssemblyInfo.cs
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\libreriaVehiculos.csproj.CoreCompileInputs.cache
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\libreriaVehiculos.dll
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\refint\libreriaVehiculos.dll
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\libreriaVehiculos.pdb
+D:\interfazeen_garapena\U3\libreriaVehiculos\obj\Debug\net8.0-windows\ref\libreriaVehiculos.dll
