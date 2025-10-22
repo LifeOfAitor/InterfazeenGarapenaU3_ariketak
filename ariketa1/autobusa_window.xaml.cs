@@ -12,6 +12,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using System.Windows;
+
 
 namespace ariketa1
 {
@@ -20,13 +26,38 @@ namespace ariketa1
     /// </summary>
     public partial class autobusa_window : Window
     {
-        public autobusa_window()
+        private const int TOTAL_ASIENTOS = 10;
+        private const string RUTA_JSON = "reservas.json";
+        private ReservaVehiculo reservaVehiculo = new ReservaVehiculo();
+        private Random random = new Random();
+        private DateTime fechaReserva;
+
+        public autobusa_window(DateTime fechaReserva, string tipoVehiculo)
         {
             InitializeComponent();
-            AulkiakSortu();//aulkiak sortzea
-            mezuaErakutsi();//garbituko dut textbox-a hasieran
-        }
 
+            this.fechaReserva = fechaReserva;
+
+            CargarReservasJson();
+
+            reservaVehiculo.Vehiculo = tipoVehiculo;
+
+            AulkiakSortu();
+
+            var asientosOcupados = ObtenerReservasParaFecha(fechaReserva);
+
+            foreach (var child in (Content as Grid).Children)
+            {
+                if (child is libreriaVehiculos.SillaControl silla)
+                {
+                    if (asientosOcupados.Contains(silla.Asiento.NumeroAsiento))
+                    {
+                        silla.Asiento.Estado = libreriaVehiculos.EstadoAsiento.Ocupado;
+                    }
+                }
+            }
+            mezuaErakutsi();
+        }
 
 
         private void AulkiakSortu()
@@ -85,6 +116,29 @@ namespace ariketa1
 
             return seleccionados;
         }
+        private List<int> ObtenerReservasParaFecha(DateTime fecha)
+        {
+            if (!reservaVehiculo.ReservasPorFecha.ContainsKey(fecha))
+            {
+                int cantidadReservas = random.Next(0, 5); // entre 0 y 4 reservas aleatorias
+                var reservados = new List<int>();
+
+                while (reservados.Count < cantidadReservas)
+                {
+                    int asiento = random.Next(1, TOTAL_ASIENTOS + 1);
+                    if (!reservados.Contains(asiento))
+                    {
+                        reservados.Add(asiento);
+                    }
+                }
+
+                reservaVehiculo.ReservasPorFecha[fecha] = reservados;
+                GuardarReservasJson();
+            }
+
+            return reservaVehiculo.ReservasPorFecha[fecha];
+        }
+
 
         private void CambiarEstadoAsientos(List<int> asientos, libreriaVehiculos.EstadoAsiento nuevoEstado)
         {
@@ -99,8 +153,8 @@ namespace ariketa1
 
         private bool ConfirmarReserva(List<int> asientosSeleccionados)
         {
-            string mensaje = "Has seleccionado estos asientos: " + string.Join(", ", asientosSeleccionados) + "\n¿Seguro que quieres reservarlos?";
-            var resultado = MessageBox.Show(mensaje, "Confirmar reserva", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            string mensaje = "Aulki hauek aukeratu dituzu: " + string.Join(", ", asientosSeleccionados) + "\nBenetan erreserbatu nahi dituzu?";
+            var resultado = MessageBox.Show(mensaje, "Konfirmatu erreserba", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             return resultado == MessageBoxResult.Yes;
         }
@@ -111,14 +165,14 @@ namespace ariketa1
 
             if (asientosSeleccionados.Count == 0)
             {
-                MessageBox.Show("No has seleccionado ningún asiento.", "Atención", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Ez duzu aulkirik aukeratu.", "Kontuz", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             if (ConfirmarReserva(asientosSeleccionados))
             {
                 CambiarEstadoAsientos(asientosSeleccionados, libreriaVehiculos.EstadoAsiento.Ocupado);
-                MessageBox.Show("Reserva confirmada.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Erreserba konfirmatua.", "Primeran", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -132,6 +186,28 @@ namespace ariketa1
             this.DialogResult = true;
             this.Close();
         }
+
+        private void CargarReservasJson()
+        {
+            if (File.Exists(RUTA_JSON))
+            {
+                string json = File.ReadAllText(RUTA_JSON);
+                reservaVehiculo = JsonSerializer.Deserialize<ReservaVehiculo>(json);
+            }
+            else
+            {
+                reservaVehiculo = new ReservaVehiculo();
+                GuardarReservasJson();
+            }
+        }
+
+        private void GuardarReservasJson()
+        {
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            string json = JsonSerializer.Serialize(reservaVehiculo, options);
+            File.WriteAllText(RUTA_JSON, json);
+        }
+
 
 
     }

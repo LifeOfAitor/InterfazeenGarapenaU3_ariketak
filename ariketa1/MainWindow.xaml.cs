@@ -17,18 +17,30 @@ namespace ariketa1
     /// </summary>
     public partial class MainWindow : Window
     {
+        public DateTime TwoMonthsFromNow { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            TwoMonthsFromNow = DateTime.Today.AddMonths(2);
+            DataContext = this;
+
+            datePickerReserva.SelectedDate = DateTime.Today;
         }
 
         private void btn_autobus_Click(object sender, RoutedEventArgs e)
         {
-            Window autobusaWindow = new autobusa_window();
-            if (autobusaWindow.ShowDialog() == true)
+            if (datePickerReserva.SelectedDate == null)
             {
-
+                MessageBox.Show("Mesedez, hautatu data baliozko bat.", "Errorea", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
+
+            DateTime fechaSeleccionada = datePickerReserva.SelectedDate.Value;
+
+            // Abrir ventana de autobús pasando la fecha seleccionada
+            var ventanaAutobus = new autobusa_window(fechaSeleccionada, "Autobusa");
+            ventanaAutobus.ShowDialog();
         }
 
         private void btn_tren_Click(object sender, RoutedEventArgs e)

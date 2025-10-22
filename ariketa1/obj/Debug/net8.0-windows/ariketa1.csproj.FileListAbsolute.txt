@@ -24,3 +24,4 @@ D:\interfazeen_garapena\U3\ariketa1\obj\Debug\net8.0-windows\ariketa1.csproj.Ass
 D:\interfazeen_garapena\U3\ariketa1\obj\Debug\net8.0-windows\ariketa1.csproj.Up2Date
 D:\interfazeen_garapena\U3\ariketa1\obj\Debug\net8.0-windows\autobusa_window.g.cs
 D:\interfazeen_garapena\U3\ariketa1\obj\Debug\net8.0-windows\autobusa_window.baml
+D:\interfazeen_garapena\U3\ariketa1\obj\Debug\net8.0-windows\ariketa1.sourcelink.json
