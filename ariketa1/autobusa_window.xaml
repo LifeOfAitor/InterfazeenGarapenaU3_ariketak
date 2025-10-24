@@ -7,7 +7,7 @@
         xmlns:libreriaVehiculos="clr-namespace:libreriaVehiculos;assembly=libreriaVehiculos" x:Class="ariketa1.autobusa_window"
         mc:Ignorable="d"
         Title="autobusa_window" Height="500" Width="500">
-    <Grid>
+    <Grid x:Name="grida" >
         <TextBox x:Name="txt_box_erreserbatutako_aulkia" HorizontalAlignment="Center" Margin="0,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Erreserbatutako eserlekua:" HorizontalAlignment="Left" Margin="21,45,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btn_erreserbatu" Content="Erreserbatu" HorizontalAlignment="Left" Margin="352,49,0,0" VerticalAlignment="Top" Width="110" Click="btn_erreserbatu_Click"/>

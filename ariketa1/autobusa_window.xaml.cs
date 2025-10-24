@@ -1,23 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Windows;
-
+using System.Windows.Controls;
 
 namespace ariketa1
 {
@@ -38,27 +25,27 @@ namespace ariketa1
 
             this.fechaReserva = fechaReserva;
 
+            // Cargar reservas guardadas
             CargarReservasJson();
 
             reservaVehiculo.Vehiculo = tipoVehiculo;
 
+            // Crear los asientos en la interfaz
             AulkiakSortu();
 
+            // Obtener asientos ocupados para la fecha y actualizar visualmente
             var asientosOcupados = ObtenerReservasParaFecha(fechaReserva);
-
-            foreach (var child in (Content as Grid).Children)
+            foreach (var child in grida.Children)
             {
-                if (child is libreriaVehiculos.SillaControl silla)
+                if (child is libreriaVehiculos.SillaControl silla &&
+                    asientosOcupados.Contains(silla.Asiento.NumeroAsiento))
                 {
-                    if (asientosOcupados.Contains(silla.Asiento.NumeroAsiento))
-                    {
-                        silla.Asiento.Estado = libreriaVehiculos.EstadoAsiento.Ocupado;
-                    }
+                    silla.Asiento.Estado = libreriaVehiculos.EstadoAsiento.Ocupado;
                 }
             }
+
             mezuaErakutsi();
         }
-
 
         private void AulkiakSortu()
         {
@@ -77,7 +64,7 @@ namespace ariketa1
                     silla.EstadoCambiado += Silla_EstadoCambiado;
 
                     Grid.SetZIndex(silla, 1);
-                    (Content as Grid).Children.Add(silla);
+                    grida.Children.Add(silla);
                 }
             }
         }
@@ -90,14 +77,12 @@ namespace ariketa1
         public void mezuaErakutsi()
         {
             txt_box_erreserbatutako_aulkia.Text = "";
-            for (int i = 0; i < (Content as Grid).Children.Count; i++)
+            foreach (var child in grida.Children)
             {
-                if ((Content as Grid).Children[i] is libreriaVehiculos.SillaControl silla)
+                if (child is libreriaVehiculos.SillaControl silla &&
+                    silla.Asiento.Estado == libreriaVehiculos.EstadoAsiento.Seleccionado)
                 {
-                    if (silla.Asiento.Estado == libreriaVehiculos.EstadoAsiento.Seleccionado)
-                    {
-                        txt_box_erreserbatutako_aulkia.Text += silla.Asiento.NumeroAsiento + " ";
-                    }
+                    txt_box_erreserbatutako_aulkia.Text += silla.Asiento.NumeroAsiento + " ";
                 }
             }
         }
@@ -106,9 +91,10 @@ namespace ariketa1
         {
             var seleccionados = new List<int>();
 
-            foreach (var child in (Content as Grid).Children)
+            foreach (var child in grida.Children)
             {
-                if (child is libreriaVehiculos.SillaControl silla && silla.Asiento.Estado == libreriaVehiculos.EstadoAsiento.Seleccionado)
+                if (child is libreriaVehiculos.SillaControl silla &&
+                    silla.Asiento.Estado == libreriaVehiculos.EstadoAsiento.Seleccionado)
                 {
                     seleccionados.Add(silla.Asiento.NumeroAsiento);
                 }
@@ -116,44 +102,50 @@ namespace ariketa1
 
             return seleccionados;
         }
-        private List<int> ObtenerReservasParaFecha(DateTime fecha)
-        {
-            if (!reservaVehiculo.ReservasPorFecha.ContainsKey(fecha))
-            {
-                int cantidadReservas = random.Next(0, 5); // entre 0 y 4 reservas aleatorias
-                var reservados = new List<int>();
-
-                while (reservados.Count < cantidadReservas)
-                {
-                    int asiento = random.Next(1, TOTAL_ASIENTOS + 1);
-                    if (!reservados.Contains(asiento))
-                    {
-                        reservados.Add(asiento);
-                    }
-                }
-
-                reservaVehiculo.ReservasPorFecha[fecha] = reservados;
-                GuardarReservasJson();
-            }
-
-            return reservaVehiculo.ReservasPorFecha[fecha];
-        }
-
 
         private void CambiarEstadoAsientos(List<int> asientos, libreriaVehiculos.EstadoAsiento nuevoEstado)
         {
-            foreach (var child in (Content as Grid).Children)
+            foreach (var child in grida.Children)
             {
-                if (child is libreriaVehiculos.SillaControl silla && asientos.Contains(silla.Asiento.NumeroAsiento))
+                if (child is libreriaVehiculos.SillaControl silla &&
+                    asientos.Contains(silla.Asiento.NumeroAsiento))
                 {
                     silla.Asiento.Estado = nuevoEstado;
                 }
             }
         }
 
+        #region Gestión de reservas
+
+        private List<int> ObtenerReservasParaFecha(DateTime fecha)
+        {
+            var asientosOcupados = reservaVehiculo.ObtenerAsientosReservados(fecha);
+
+            if (asientosOcupados.Count == 0)
+            {
+                // Generar algunas reservas aleatorias si no hay ninguna
+                int cantidadReservas = random.Next(0, 5);
+                var reservados = new List<int>();
+
+                while (reservados.Count < cantidadReservas)
+                {
+                    int asiento = random.Next(1, TOTAL_ASIENTOS + 1);
+                    if (!reservados.Contains(asiento))
+                        reservados.Add(asiento);
+                }
+
+                reservaVehiculo.AgregarReservas(fecha, reservados);
+                GuardarReservasJson();
+                return reservados;
+            }
+
+            return asientosOcupados;
+        }
+
         private bool ConfirmarReserva(List<int> asientosSeleccionados)
         {
-            string mensaje = "Aulki hauek aukeratu dituzu: " + string.Join(", ", asientosSeleccionados) + "\nBenetan erreserbatu nahi dituzu?";
+            string mensaje = "Aulki hauek aukeratu dituzu: " + string.Join(", ", asientosSeleccionados) +
+                             "\nBenetan erreserbatu nahi dituzu?";
             var resultado = MessageBox.Show(mensaje, "Konfirmatu erreserba", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             return resultado == MessageBoxResult.Yes;
@@ -171,7 +163,13 @@ namespace ariketa1
 
             if (ConfirmarReserva(asientosSeleccionados))
             {
+                // Cambiar estado visual
                 CambiarEstadoAsientos(asientosSeleccionados, libreriaVehiculos.EstadoAsiento.Ocupado);
+
+                // Guardar reservas en la clase y persistir en JSON
+                reservaVehiculo.AgregarReservas(fechaReserva, asientosSeleccionados);
+                GuardarReservasJson();
+
                 MessageBox.Show("Erreserba konfirmatua.", "Primeran", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
@@ -179,20 +177,26 @@ namespace ariketa1
                 CambiarEstadoAsientos(asientosSeleccionados, libreriaVehiculos.EstadoAsiento.Libre);
             }
 
-            mezuaErakutsi(); // Actualizar el TextBox con los asientos actuales
+            mezuaErakutsi(); // Actualizar TextBox
         }
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            this.DialogResult = true;
-            this.Close();
-        }
+
+        #endregion
+
+        #region Guardar y cargar JSON
 
         private void CargarReservasJson()
         {
             if (File.Exists(RUTA_JSON))
             {
-                string json = File.ReadAllText(RUTA_JSON);
-                reservaVehiculo = JsonSerializer.Deserialize<ReservaVehiculo>(json);
+                try
+                {
+                    string json = File.ReadAllText(RUTA_JSON);
+                    reservaVehiculo = JsonSerializer.Deserialize<ReservaVehiculo>(json) ?? new ReservaVehiculo();
+                }
+                catch
+                {
+                    reservaVehiculo = new ReservaVehiculo();
+                }
             }
             else
             {
@@ -208,9 +212,12 @@ namespace ariketa1
             File.WriteAllText(RUTA_JSON, json);
         }
 
+        #endregion
 
-
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.DialogResult = true;
+            this.Close();
+        }
     }
-
-
 }
