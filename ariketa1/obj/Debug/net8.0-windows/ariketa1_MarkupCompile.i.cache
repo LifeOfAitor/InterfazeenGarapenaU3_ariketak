@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\aitor\Documents\DAM\ZUBIRI\interfazeen_garapena\InterfazeenGarapenaU3_ariketak\ariketa1\App.xaml
-2-278926400
+4-630806377
 
-9156226362
+12-247421058
 199-302863506
-autobusa_window.xaml;MainWindow.xaml;
+autobusa_window.xaml;hegazkina_window.xaml;MainWindow.xaml;trena_window.xaml;
 
 False
 

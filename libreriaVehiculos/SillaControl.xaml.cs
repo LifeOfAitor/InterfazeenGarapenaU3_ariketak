@@ -16,7 +16,7 @@ namespace libreriaVehiculos
             else if (Asiento.Estado == EstadoAsiento.Seleccionado)
                 Asiento.Estado = EstadoAsiento.Libre;
 
-            EstadoCambiado?.Invoke(this, EventArgs.Empty);  // Notifica el cambio
+            EstadoCambiado?.Invoke(this, EventArgs.Empty);  // aldaketa jakinarazten du
         }
 
 

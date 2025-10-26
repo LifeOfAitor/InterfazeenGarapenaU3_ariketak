@@ -3,5 +3,7 @@ using System.Collections.Generic;
 
 public class ReservasPorFecha
 {
-    public Dictionary<DateTime, List<int>> Reservas { get; set; } = new Dictionary<DateTime, List<int>>();
+    // Guarda las reservas por fecha en formato string (ISO)
+    public Dictionary<string, List<int>> Reservas { get; set; } = new();
 }
+

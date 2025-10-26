@@ -5,5 +5,11 @@
     <Compile Update="autobusa_window.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="hegazkina_window.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="trena_window.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

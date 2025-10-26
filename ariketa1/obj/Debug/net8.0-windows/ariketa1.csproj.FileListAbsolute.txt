@@ -52,3 +52,7 @@ C:\Users\aitor\Documents\DAM\ZUBIRI\interfazeen_garapena\InterfazeenGarapenaU3_a
 C:\Users\aitor\Documents\DAM\ZUBIRI\interfazeen_garapena\InterfazeenGarapenaU3_ariketak\ariketa1\obj\Debug\net8.0-windows\ariketa1.pdb
 C:\Users\aitor\Documents\DAM\ZUBIRI\interfazeen_garapena\InterfazeenGarapenaU3_ariketak\ariketa1\obj\Debug\net8.0-windows\ariketa1.genruntimeconfig.cache
 C:\Users\aitor\Documents\DAM\ZUBIRI\interfazeen_garapena\InterfazeenGarapenaU3_ariketak\ariketa1\obj\Debug\net8.0-windows\ref\ariketa1.dll
+C:\Users\aitor\Documents\DAM\ZUBIRI\interfazeen_garapena\InterfazeenGarapenaU3_ariketak\ariketa1\obj\Debug\net8.0-windows\trena_window.g.cs
+C:\Users\aitor\Documents\DAM\ZUBIRI\interfazeen_garapena\InterfazeenGarapenaU3_ariketak\ariketa1\obj\Debug\net8.0-windows\hegazkina_window.g.cs
+C:\Users\aitor\Documents\DAM\ZUBIRI\interfazeen_garapena\InterfazeenGarapenaU3_ariketak\ariketa1\obj\Debug\net8.0-windows\trena_window.baml
+C:\Users\aitor\Documents\DAM\ZUBIRI\interfazeen_garapena\InterfazeenGarapenaU3_ariketak\ariketa1\obj\Debug\net8.0-windows\hegazkina_window.baml
